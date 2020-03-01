@@ -40,4 +40,16 @@ public class StepDefinitions {
     	buttonsPage.clickButton3();
     	
     }
+    @When("^user selects options$")
+    public void user_selects_options() throws Throwable {
+    	driver.get("http://webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html");
+    	OptionsPage optionsPage = new OptionsPage(driver);
+    	
+    	optionsPage.selectPreferences("python", "eclipse", "javascript");
+    	
+    	optionsPage.deselectCheckBox("option-3");
+    	optionsPage.selectCheckBox("option-1");
+    	optionsPage.selectColor("orange");
+    	optionsPage.selectColor("pink");
+    }
 }
