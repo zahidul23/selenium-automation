@@ -40,6 +40,7 @@ public class StepDefinitions {
     	buttonsPage.clickButton3();
     	
     }
+    
     @When("^user selects options$")
     public void user_selects_options() throws Throwable {
     	driver.get("http://webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html");
@@ -51,5 +52,17 @@ public class StepDefinitions {
     	optionsPage.selectCheckBox("option-1");
     	optionsPage.selectColor("orange");
     	optionsPage.selectColor("pink");
+    }
+    
+    @When("^user clicks popup button$")
+    public void user_clicks_popup_button() throws Throwable {
+    	driver.get("http://webdriveruniversity.com/Popup-Alerts/index.html");
+    	AlertsPage alertsPage = new AlertsPage(driver);
+    	
+    	alertsPage.clickjsButton();
+    	alertsPage.clickModalButton();
+    	alertsPage.clickjsConfirmButton(true);
+    	alertsPage.clickjsConfirmButton(false);
+    	alertsPage.clickAjaxButton();
     }
 }
