@@ -56,6 +56,14 @@ public class OptionsPage extends PageObject {
 		}
 	}
 	
+	public void resetAllCheckBox() {
+		for (WebElement box : checkboxes) {
+			if (box.isSelected()){
+				box.click();
+			}
+		}
+	}
+	
 	public void selectColor(String color) {
 		for (WebElement radio : this.radios) {
 			if (radio.getAttribute("value").equals(color)){
