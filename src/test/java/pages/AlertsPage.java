@@ -34,21 +34,23 @@ public class AlertsPage extends PageObject {
 	
 	public void clickjsButton() {
 		this.jsAlertButton.click();
-		WebDriverWait wait = new WebDriverWait(this.driver, 10);
-		Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-		alert.accept();
 	}
 	
 	public void clickModalButton() {
 		this.modalPopupButton.click();
+	}
+
+	public void closeModalPopup() {
 		WebDriverWait wait = new WebDriverWait(this.driver, 10);
 		wait.until(ExpectedConditions.visibilityOf(this.modalPopup));
 		this.modalPopup.click();
 		wait.until(ExpectedConditions.invisibilityOf(this.modalPopup));
 	}
-	
-	public void clickjsConfirmButton(boolean accept) {
+	public void clickjsConfirmButton() {
 		this.jsConfirmAlertButton.click();
+	}
+	
+	public void confirmjsPopup(boolean accept) {
 		WebDriverWait wait = new WebDriverWait(this.driver, 10);
 		Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 		if(accept) {
@@ -60,16 +62,7 @@ public class AlertsPage extends PageObject {
 	}
 	
 	public void clickAjaxButton() {
-		String url = this.driver.getCurrentUrl();
 		this.ajaxLoaderButton.click();
-		
-		WebDriverWait wait = new WebDriverWait(this.driver, 10);
-		wait.until(ExpectedConditions.not(ExpectedConditions.urlToBe(url)));
-		
-		AjaxLoaderPage ajaxPage = new AjaxLoaderPage(this.driver);
-		ajaxPage.waitForLoader();
-		ajaxPage.clickButton();
-		
 	}
 
 }

@@ -17,6 +17,12 @@ public class AjaxLoaderPage extends PageObject{
 	@FindBy(id="button1")
 	private WebElement button1;
 	
+	@FindBy(id="myModalClick")
+	private WebElement popup;
+	
+	@FindBy(css="#myModalClick div div h4")
+	private WebElement popupHeader;
+	
 	
 	public AjaxLoaderPage(WebDriver driver) {
 		super(driver);
@@ -32,4 +38,19 @@ public class AjaxLoaderPage extends PageObject{
 		wait.until(ExpectedConditions.visibilityOf(divBlock));
 		button1.click();
 	}
+	
+	public boolean popupHasText(String text) {
+		if (this.popupHeader.getText().equals(text)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public void waitForPopup() {
+		WebDriverWait wait = new WebDriverWait(this.driver, 10);
+		wait.until(ExpectedConditions.visibilityOf(popup));
+	}
+	
 }
