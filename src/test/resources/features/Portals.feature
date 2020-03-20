@@ -1,4 +1,4 @@
-@test	
+@test
 Feature: Testing WebDriverUniversity Portals
 
 Scenario Outline: Selecting options on options page
@@ -29,3 +29,29 @@ Scenario: Closing js and modal popups
 	Then user closes js popup
 	When user clicks modal popup button
 	Then user closes modal popup
+	
+Scenario Outline: Inputting valid date with datepicker
+	Given user is on datepicker page
+	When user inputs date <date>
+	Then selected date matches <date>
+	
+	Examples:
+	|date|
+	|03-21-2020|
+	|02-21-2020|
+	|04-21-2020|
+	|03-31-2022|
+
+
+Scenario Outline: Inputting invalid date with datepicker
+	Given user is on datepicker page
+	When user inputs date <date>
+	Then selected date does not match <date>
+	
+	Examples:
+	|date|
+	|03-41-2020|
+	|02-29-2021|
+	|15-21-2020|
+	|5-0-2020|
+	
