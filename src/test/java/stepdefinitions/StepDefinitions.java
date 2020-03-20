@@ -102,11 +102,30 @@ public class StepDefinitions extends BaseClass {
 		String[] checkboxOptions = checkboxes.split(",");
 
 		for (String checkboxOption : checkboxOptions) {
-			String option = "option" + checkboxOption;
+			String option = "option-" + checkboxOption;
 			optionsPage.selectCheckBox(option);
 		}
 
 	}
+	
+	@Then("^options match inputted (\\S+) (\\S+) (\\S+) (\\S+) (\\S+)$")
+    public void options_match_inputted(String primarylanguage, String enviornment, String secondarylanguage, String color, String checkboxes) throws Throwable {
+		assertEquals(primarylanguage, optionsPage.getPrimaryLanguage());
+		assertEquals(enviornment, optionsPage.getEnviornment());
+		assertEquals(secondarylanguage, optionsPage.getSecondaryLanguage());
+		
+
+		assertEquals(color, optionsPage.getColor());
+		
+		String[] checkboxOptions = checkboxes.split(",");
+
+		for (String checkboxOption : checkboxOptions) {
+			String option = "option-" + checkboxOption;
+			assertTrue(optionsPage.isChecked(option));
+		}
+		
+    }
+	
 
 	@Given("^user is on the popups page$")
 	public void user_is_on_the_popups_page() throws Throwable {

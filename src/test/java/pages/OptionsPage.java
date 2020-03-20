@@ -71,4 +71,34 @@ public class OptionsPage extends PageObject {
 			}
 		}
 	}
+	
+	public String getPrimaryLanguage() {
+		return this.dropdown1.getFirstSelectedOption().getAttribute("value");
+	}
+	
+	public String getEnviornment() {
+		return this.dropdown2.getFirstSelectedOption().getAttribute("value");
+	}
+	
+	public String getSecondaryLanguage() {
+		return this.dropdown3.getFirstSelectedOption().getAttribute("value");
+	}
+	
+	public boolean isChecked(String option) {
+		for (WebElement box : checkboxes) {
+			if (box.getAttribute("value").equals(option) && box.isSelected()){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public String getColor() {
+		for (WebElement radio : this.radios) {
+			if (radio.isSelected()) {
+				return radio.getAttribute("value");
+			}
+		}
+		return null;
+	}
 }

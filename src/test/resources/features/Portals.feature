@@ -1,11 +1,13 @@
 @test
 Feature: Testing WebDriverUniversity Portals
 
+@fin
 Scenario Outline: Selecting options on options page
 	Given user is on options page
 	When user selects languages <primarylanguage> <enviornment> <secondarylanguage>
 	When user selects color <color>
 	When user selects options <checkboxes>
+	Then options match inputted <primarylanguage> <enviornment> <secondarylanguage> <color> <checkboxes>
 	
 	Examples: 
 	|primarylanguage|enviornment|secondarylanguage|color|checkboxes|
