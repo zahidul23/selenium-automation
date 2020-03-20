@@ -60,11 +60,8 @@ public class ContactPage extends PageObject {
 
 	public boolean successfulSubmit() {
 		System.out.println(driver.getCurrentUrl());
-		if (driver.getCurrentUrl().equals("http://webdriveruniversity.com/Contact-Us/contact-form-thank-you.html")) {
-			return true;
-		} else {
-			return false;
-		}
+		boolean success= driver.getCurrentUrl().equals("http://webdriveruniversity.com/Contact-Us/contact-form-thank-you.html");
+		return  success ? true : false;
 	}
 	
 }

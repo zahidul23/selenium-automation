@@ -40,12 +40,7 @@ public class AjaxLoaderPage extends PageObject{
 	}
 	
 	public boolean popupHasText(String text) {
-		if (this.popupHeader.getText().equals(text)) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return this.popupHeader.getText().equals(text) ? true : false;
 	}
 	
 	public void waitForPopup() {
